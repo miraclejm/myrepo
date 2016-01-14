@@ -1,0 +1,6 @@
+{
+  "name": "graduation",
+  "dependencies" : {
+    "bootstrap" : "*"
+  }
+}
