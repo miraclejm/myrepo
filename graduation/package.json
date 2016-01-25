@@ -1,0 +1,16 @@
+{
+  "name": "gra",
+  "version": "0.0.1",
+  "description": "graduation",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "miraclejm",
+  "license": "ISC"
+}
