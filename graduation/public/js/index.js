@@ -1,5 +1,30 @@
-function my(){
-    var data = '{"title":"miraclejm"}';
-    var html = new EJS({url:'../temp/header.ejs'}).render(JSON.parse(data));
-}
-my();
+(function(window){
+    init();
+    function init(){
+        bindEvent();
+    }
+    function bindEvent(){
+        $('.innews').on('click',function(){
+            $('.innews').addClass('active').siblings().removeClass('active');
+            $('.snews').removeClass('none').siblings('.news-show').addClass('none');
+        });
+        $('.spread').on('click',function(){
+            $('.spread').addClass('active').siblings().removeClass('active');
+            $('.publish').removeClass('none').siblings('.news-show').addClass('none');
+        });
+        $('#login').on('click',function(){
+            $('#mask').fadeIn();
+            $('.login').fadeIn();
+        });
+        $('.log_close').on('click',function(){
+            $('#mask').fadeOut();
+            $('.login').fadeOut();
+            $('.regist').fadeOut();
+        });
+        $('#regist').on('click',function(){
+            $('#mask').fadeIn();
+            $('.regist').fadeIn();
+        });
+    }
+    $('.carousel').carousel();
+})(window);

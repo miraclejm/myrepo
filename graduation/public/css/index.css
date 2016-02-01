@@ -1,2 +1,36 @@
-*{margin: 0; padding: 0;}
-html{background: #fff;}
+*{margin: 0; padding: 0;outline: none;}
+html,body{background: #ececec;}
+ul,li{list-style: none;}
+.layout{width: 980px; margin: 0 auto; }
+#logo{background: url(../img/logo.jpg) no-repeat 0 0; width: 290px; height: 87px;background-size: 290px 87px;}
+.header{width: 980px; margin: 20px auto 0 auto; height: 87px;background: #fff;}
+.header div{float: left;}
+.header .skip{height:87px; line-height:87px; font-size:20px; margin-left: 20px;}
+.skip a{color:#000;text-decoration: underline;margin-left: 30px;}
+#myCarousel{ margin-top: 20px; }
+.carousel-inner{height: 300px;width: 980px;background: #333;}
+.nav{margin-top: 20px;background: #fff;border-radius: 10px;}
+.nav a{color: #333;margin-left: 30px;}
+.nav a:hover{text-decoration: underline;text-decoration-color: #f00;}
+.nav .identify a{margin-left: 10px;cursor: pointer;}
+.news {background: #fff; margin-top: 20px; border-radius: 10px;}
+.gift{margin-top: 40px;}
+.activity{background: #fff;}
+.head {border-bottom: 1px solid #999; margin-top: 10px;}
+.head span {color:#3c3c3c; cursor: pointer;font-weight: 600;}
+.head span:hover{color: #f00; transition: color .5s;}
+.cnt ul {margin-bottom: 0px;}
+.none{display: none;}
+.active{ color:#4724f8 !important;}
+#mask {position: fixed; display:none; top:0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 99;}
+.log_close{font-size:20px; float: right; margin:20px 20px 0 0;}
+.formLayout{position: fixed; width: 400px; height: 300px; background: #fff; z-index:999; top:50%; left:50%; transform: translate(-50%,-50%); border-radius: 10px;}
+.formLayout label{width: 80px; text-align: center;}
+.login,.regist{display: none;}
+.loginForm,.registForm{width: 300px; height: 200px; margin: 90px auto 0 auto;}
+.registForm{ margin: 40px auto 0 auto;}
+.loginForm div ,.registForm div { margin-top: 20px;}
+.loginForm .remember {float: left;margin:15px 0 0 150px;}
+.loginForm .submit {float: left; margin:20px 0 0 10px;}
+.registForm .submit {width : 100px;float: left; margin-left:150px;}
+.submit .btn {width: 100%;}

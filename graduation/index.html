@@ -3,20 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="./public/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./public/css/index.css">
-    <script type="text/javascript" src='./public/js/ejs.js'></script>
 </head>
 <body>
+    <div class='header'>
+        <div id='logo'></div>
+        <div class='skip'>
+            <a href="">西北大学</a>
+            <a href="">"三严三实"专题教育网站</a>
+            <a href="">侯伯宇先进事迹专题网</a>
+        </div>
+    </div>
+    <div id="myCarousel" class="carousel slide layout">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <div class="active item">
+            <img src="./public/img/1.jpg">
+        </div>
+        <div class="item">
+            <img src="./public/img/1.jpg">
+        </div>
+        <div class="item">
+            <img src="./public/img/1.jpg">
+        </div>
+      </div>
+      <!-- Carousel nav -->
+      <!-- <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a> -->
+    </div>
+    <div class='nav raw layout'>
+        <div class='identify col-md-2'>
+            <a id='login'>登录</a>
+            <a id='regist'>注册</a>
+        </div>
+        <div class='col-md-10'>
+            <a href="">校园新闻</a>
+            <a href="">校内活动</a>
+            <a href="">校友捐赠</a>
+            <a href="">校友互助</a>
+            <a href="">照片墙</a>
+        </div> 
+    </div>
+    
+    <div class='container layout raw'>
+        <div class='news col-md-6'>
+            <div class='head'>
+                <span class='innews active'>校园新闻</span>
+                <span class='spread'>西大公告</span>
+            </div>
+            <div class='cnt snews news-show'>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+            <div class='cnt publish none news-show'>
+                <ul>
+                    <li>a</li>
+                    <li>b</li>
+                    <li>c</li>
+                    <li>d</li>
+                </ul>
+            </div>
+        </div>
+        <div class='gift col-md-4 col-md-offset-1'>
+            <div class='head'>
+                <span class=''>校友捐赠</span>
+            </div>
+            <div class='cnt'>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+        </div>
+        <div class='activity col-md-12'>
+            <div class='head'>
+                <span class=''>校内活动</span>
+            </div>
+            <div class='cnt'>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+        </div>
+        <div class='help col-md-6'>
+            <div class='head'>
+                <span class=''>校友互助</span>
+            </div>
+            <div class='cnt'>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+        </div>
+        <div class='pic col-md-6'>
+            <div class='head'>
+                <span class=''>照片墙</span>
+            </div>
+            <div class='cnt'>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class='login formLayout'>
+        <span class="log_close glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <div class='loginForm'>
+            <form method="POST">
+                <div class='name logInput'>
+                    <label for='name'>姓名:</label>
+                    <input id='name' type='text' required="required" placeholder="请输入姓名"></input>
+                </div>
+                <div class='pass logInput'>
+                    <label for='pass'>密码:</label>
+                    <input id='pass' type='password' required="required" placeholder="请输入密码"></input>
+                </div>
+                <div class='remember logInput'>
+                    <label class="checkbox">
+                        <input type="checkbox">记住我
+                    </label>
+                </div>
+                <div class='submit'>
+                    <input id='logIn' class='btn btn-primary' type='submit' value='登录'></input>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class='regist formLayout'>
+        <span class="log_close glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <div class='registForm'>
+            <form method="POST">
+                <div class='name logInput'>
+                    <label for='name'>姓名:</label>
+                    <input id='name' type='text' required="required" placeholder="请输入姓名"></input>
+                </div>
+                <div class='account logInput'>
+                    <label for='account'>账号:</label>
+                    <input id='account' type='text' required="required" placeholder="请输入账号"></input>
+                </div>
+                <div class='pass logInput'>
+                    <label for='pass'>密码:</label>
+                    <input id='pass' type='password' required="required" placeholder="请输入密码"></input>
+                </div>
+                <div class='logInput'>
+                    <label for='passSure'>密码确认:</label>
+                    <input id='passSure' type='password' required="required" placeholder="请再次输入密码"></input>
+                </div>
+                <div class='submit'>
+                    <input class='btn btn-primary' type='submit' value='注册'></input>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id='mask'></div>
     <script type="text/javascript" src='./public/lib/jquery/dist/jquery.min.js'></script>
+    <script type="text/javascript" src='./public/lib/bootstrap/dist/js/bootstrap.min.js'></script>
     <script type="text/javascript" src='./public/js/index.js'></script>
-=======
-    <link rel="stylesheet" type="text/css" href="static/bootstrap/dist/css/bootstrap.min.css">
-</head>
-<body>
-    hello world!
-    <script type="text/javascript" src="static/jquery/dist/jquery.min.js"></script>
->>>>>>> 72c5f0a22ab4664aedf0082840dea8c9babf4c7b
 </body>
 </html>
