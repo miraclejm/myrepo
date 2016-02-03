@@ -1,0 +1,8 @@
+*{margin: 0px;padding:0px;}
+body{background: #ececec;}
+.layout{width: 770px; margin: 0 auto; padding-bottom: 20px;}
+.layout .row div{display: inline-block; margin-left: 20px;}
+.row{margin:30px auto 20px 30px;}
+.row a{padding: 5px; border-radius: 5px;}
+a{color: #333;}
+.activityList{ margin: 50px 0 0 50px; }

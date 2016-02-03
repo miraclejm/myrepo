@@ -27,10 +27,10 @@
             <img src="./public/img/1.jpg">
         </div>
         <div class="item">
-            <img src="./public/img/1.jpg">
+            <img src="./public/img/2.jpg">
         </div>
         <div class="item">
-            <img src="./public/img/1.jpg">
+            <img src="./public/img/3.jpg">
         </div>
       </div>
       <!-- Carousel nav -->
@@ -44,15 +44,15 @@
         </div>
         <div class='col-md-10'>
             <a href="">校园新闻</a>
-            <a href="">校内活动</a>
-            <a href="">校友捐赠</a>
+            <a href="activity.html">校友活动</a>
+            <a href="gift.html">校友捐赠</a>
             <a href="">校友互助</a>
-            <a href="">照片墙</a>
+            <a href="pic.html">照片墙</a>
         </div> 
     </div>
     
     <div class='container layout raw'>
-        <div class='news col-md-6'>
+        <div class='news col-md-5'>
             <div class='head'>
                 <span class='innews active'>校园新闻</span>
                 <span class='spread'>西大公告</span>
@@ -74,78 +74,61 @@
                 </ul>
             </div>
         </div>
-        <div class='gift col-md-4 col-md-offset-1'>
+    <!--         <div class='gift col-md-4 col-md-offset-1'>
+        <div class='head'>
+            <span class=''>校友捐赠</span>
+        </div>
+        <div class='cnt'>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+    </div> -->
+        <div class='activity col-md-5 col-md-offset-1'>
             <div class='head'>
-                <span class=''>校友捐赠</span>
+                <span>校友活动</span>
             </div>
             <div class='cnt'>
                 <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
                 </ul>
             </div>
         </div>
-        <div class='activity col-md-12'>
-            <div class='head'>
-                <span class=''>校内活动</span>
-            </div>
-            <div class='cnt'>
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                </ul>
-            </div>
-        </div>
-        <div class='help col-md-6'>
-            <div class='head'>
-                <span class=''>校友互助</span>
-            </div>
-            <div class='cnt'>
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                </ul>
-            </div>
-        </div>
-        <div class='pic col-md-6'>
-            <div class='head'>
-                <span class=''>照片墙</span>
-            </div>
-            <div class='cnt'>
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                </ul>
-            </div>
-        </div>
+<!--         <div class='help col-md-6'>
+    <div class='head'>
+        <span class=''>校友互助</span>
+    </div>
+    <div class='cnt'>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</div> -->
     </div>
     <div class='login formLayout'>
         <span class="log_close glyphicon glyphicon-remove" aria-hidden="true"></span>
         <div class='loginForm'>
-            <form method="POST">
+            <form method="POST" action="./public/php/login.php" class='signIn'>
                 <div class='name logInput'>
-                    <label for='name'>姓名:</label>
-                    <input id='name' type='text' required="required" placeholder="请输入姓名"></input>
+                    <label for='name'>账号:</label>
+                    <input id='logAccount' type='text' name='account' required="required" placeholder="请输入姓名" minlength="6"></input>
                 </div>
                 <div class='pass logInput'>
                     <label for='pass'>密码:</label>
-                    <input id='pass' type='password' required="required" placeholder="请输入密码"></input>
+                    <input id='pass' type='password' name='password' required="required" placeholder="请输入密码" minlength="6"></input>
                 </div>
                 <div class='remember logInput'>
                     <label class="checkbox">
                         <input type="checkbox">记住我
                     </label>
                 </div>
-                <div class='submit'>
-                    <input id='logIn' class='btn btn-primary' type='submit' value='登录'></input>
+                <div class='submit' id='logIn'>
+                    <input class='btn btn-primary' type="submit" value='登录'></input>
                 </div>
             </form>
         </div>
@@ -153,25 +136,26 @@
     <div class='regist formLayout'>
         <span class="log_close glyphicon glyphicon-remove" aria-hidden="true"></span>
         <div class='registForm'>
-            <form method="POST">
+            <form method="POST" action="./public/php/regist.php" class='registIn'>
                 <div class='name logInput'>
                     <label for='name'>姓名:</label>
-                    <input id='name' type='text' required="required" placeholder="请输入姓名"></input>
+                    <input id='name' type='text' required="required" placeholder="请输入姓名" minlength="4"></input>
                 </div>
                 <div class='account logInput'>
                     <label for='account'>账号:</label>
-                    <input id='account' type='text' required="required" placeholder="请输入账号"></input>
+                    <input id='registAccount' type='text' required="required" placeholder="请输入账号" minlength="6"></input>
                 </div>
                 <div class='pass logInput'>
                     <label for='pass'>密码:</label>
-                    <input id='pass' type='password' required="required" placeholder="请输入密码"></input>
+                    <input id='registPass' type='password' required="required" placeholder="请输入密码" minlength="6"></input>
                 </div>
                 <div class='logInput'>
                     <label for='passSure'>密码确认:</label>
-                    <input id='passSure' type='password' required="required" placeholder="请再次输入密码"></input>
+                    <input id='passSure' type='password' required="required" placeholder="请再次输入密码" minlength="6"></input>
                 </div>
-                <div class='submit'>
-                    <input class='btn btn-primary' type='submit' value='注册'></input>
+                <div class='warning'>两次输入密码不相同!</div>
+                <div class='submit' id='registIn'>
+                    <input class='btn btn-primary'  value='注册'></input>
                 </div>
             </form>
         </div>

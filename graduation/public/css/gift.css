@@ -1,0 +1,61 @@
+*{margin: 0; padding: 0;}
+body{
+    background: #ececec;
+}
+@font-face{font-family: myFont; src:url("../fonts/font.ttf");}
+.head_bar{width: 980px; overflow: hidden; background: #fff; margin-top:20px;}
+.head_bar img{float: left; width: 580px; height: 300px;}
+.layout{ width: 980px; margin: 0 auto 20px auto; padding-bottom: 20px;}
+.head_bar p{ float: right; width: 52px; margin: 0 5px; font-family: myFont; height: 200px;}
+.font4{font-size: 52px; width: 52px;}
+.font3{font-size: 48px; width: 48px;}
+.font2{font-size: 44px; width: 44px;}
+.font1{font-size: 40px; width: 40px;}
+.giftLeft{float: left; width: 150px; margin-top: 50px; text-align: center;}
+.giftLeft div{margin-top: 5px; background: #fff; padding: 5px; border-bottom: 1px solid #999; color: #3c3c3c; font-size: 16px; cursor: pointer;}
+.giftLeft div:hover{
+     -webkit-animation: pic_slide 1000ms forwards;
+     -o-animation: pic_slide 1000ms forwards;
+     -moz-animation:pic_slide 1000ms forwards;
+     animation: pic_slide 1000ms forwards;
+     position: relative;
+     z-index: 999;
+     box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+@keyframes pic_slide{
+    0%{
+        transform:scale(1,1);
+    }
+    100%{
+        transform:scale(1.1,1.1);
+    }
+}
+@-o-keyframes pic_slide{
+    0%{
+        transform:scale(1,1);
+    }
+    100%{
+        transform:scale(1.1,1.1);
+    }
+}
+@-webkit-keyframes pic_slide{
+    0%{
+        transform:scale(1,1);
+    }
+    100%{
+        transform:scale(1.1,1.1);
+    }
+}
+.gotoIndex{background: #78ade3;}
+.giftLeft .active{background: #f00; color:#fff;}
+.giftRight div{line-height: 25px;}
+.giftRight .con{display: none; width: 700px;}
+.giftRight{float: left; margin-left: 100px; overflow: hidden;}
+.article{ width: 600px; border-bottom: 1px solid #999;}
+.clearfix{clear: both;}
+.line{height: 1px; width: 100%; background: #999;}
+#use table{background: #fff;}
+#us div{ line-height: 25px; }
+#use table td{border: 1px solid #333;}
+h3{background: -webkit-linear-gradient(left,#f00,#FF3366); background: linear-gradient(left,#f00,#FF3366); width: 150px; text-align: center; color: #fff;}
+.thx{ font-size: 18px; background: -webkit-linear-gradient(#ccc 0,#fff 50%, #ccc 100%); border-radius:10px; margin-top: 20px;}
