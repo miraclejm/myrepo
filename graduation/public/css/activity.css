@@ -5,4 +5,9 @@ body{background: #ececec;}
 .row{margin:30px auto 20px 30px;}
 .row a{padding: 5px; border-radius: 5px;}
 a{color: #333;}
+.article{ position: relative; padding-bottom: 50px;}
+.article .btn{padding:0px; position: absolute; bottom: 0; display: none; width: 100px; height: 25px; background: #f00; color: #fff; margin-left: 390px; line-height: 25px;}
 .activityList{ margin: 50px 0 0 50px; }
+.activityList div {margin-top: 20px; cursor: pointer;}
+.none{display: none;}
+.none div{ line-height: 25px; }

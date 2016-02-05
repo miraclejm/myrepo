@@ -1,0 +1,47 @@
+*{margin: 0px; padding: 0px;}
+body{background: #ececec; padding-bottom: 20px;}
+.layout{width: 770px; margin: 0 auto; padding-bottom: 20px;}
+.layout .row div{display: inline-block; margin-left: 20px;}
+.row{margin:30px auto 20px 150px;}
+.row a{padding: 5px; border-radius: 5px;}
+a{color: #333;}
+.helpLeft{float: left; width: 150px; margin-top: 50px; text-align: center;}
+.helpLeft div{margin-top: 5px; background: #fff; padding: 5px; border-bottom: 1px solid #999; color: #3c3c3c; font-size: 16px; cursor: pointer;}
+.helpLeft div:hover{
+     -webkit-animation: pic_slide 1000ms forwards;
+     -o-animation: pic_slide 1000ms forwards;
+     -moz-animation:pic_slide 1000ms forwards;
+     animation: pic_slide 1000ms forwards;
+     position: relative;
+     z-index: 999;
+     box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+@keyframes pic_slide{
+    0%{
+        transform:scale(1,1);
+    }
+    100%{
+        transform:scale(1.1,1.1);
+    }
+}
+@-o-keyframes pic_slide{
+    0%{
+        transform:scale(1,1);
+    }
+    100%{
+        transform:scale(1.1,1.1);
+    }
+}
+@-webkit-keyframes pic_slide{
+    0%{
+        transform:scale(1,1);
+    }
+    100%{
+        transform:scale(1.1,1.1);
+    }
+}
+.none {display: none;}
+.helpLeft .active{background: #f00; color:#fff;}
+.helpRight{float: left; width: 500px; margin-left: 40px;}
+.none div{line-height: 25px;}
+.comment{ display: none; }

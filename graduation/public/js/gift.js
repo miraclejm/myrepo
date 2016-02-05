@@ -169,6 +169,5 @@
                 "rate":"13/42",
                 "main":"财政部教育部"*/
         container.append(html);
-        console.log(data[0].name);
     }
 })(window);

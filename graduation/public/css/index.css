@@ -1,5 +1,5 @@
 *{margin: 0; padding: 0;outline: none;}
-html,body{background: #ececec;}
+html,body{background: #ececec; padding-bottom:20px;}
 ul,li{list-style: none;}
 .layout{width: 980px; margin: 0 auto; }
 #logo{background: url(../img/logo.jpg) no-repeat 0 0; width: 290px; height: 87px;background-size: 290px 87px;}
@@ -17,7 +17,7 @@ ul,li{list-style: none;}
 .head {border-bottom: 1px solid #999; margin-top: 10px;}
 .head span {color:#3c3c3c; cursor: pointer;font-weight: 600;}
 .head span:hover{color: #f00; transition: color .5s;}
-.cnt ul {margin-bottom: 0px;}
+.cnt ul {margin-bottom: 0px; padding:10px 0px;}
 .none{display: none;}
 .active{ color:#4724f8 !important;}
 #mask {position: fixed; display:none; top:0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 99;}

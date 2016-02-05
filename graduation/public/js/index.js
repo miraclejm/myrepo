@@ -36,10 +36,35 @@
                 "flag":"dead",
                 "name":"悼孙绳武兄",
                 "time":"2014-06-16 "
-            }
+            },
+            {
+                "flag":"year",
+                "time":"2014-04-21",
+                "name":"西北大学大庆2013年年会顺利召开"
+            },
+            {
+                "flag":"reward",
+                "name":"我校设立“何炼成奖”",
+                "time":"2014-01-16"
+            }/*,
+            {
+                "flag":"friend",
+                "name":"校友赵文智、崔鹏分别当选中国工程院院士、中国科学院院士",
+                "time":"2013-12-20 "
+            },
+            {
+                "flag":"resource",
+                "time":"2014-01-16 ",
+                "name":"中国西部资源利用、生态建设与灾害防治研讨会在我校召开"
+            },
+            {
+                "flag":"person",
+                "time":"2014-02-25 ",
+                "name":"我校校友龚全珍老人当选感动中国2013年度人物"
+            }*/
         ];
         for(var i in activityJson){
-            var html = '<li><a href="./public/static/'+activityJson[i].flag+'.html">'+activityJson[i].name+'('+activityJson[i].time+')</a></li>'
+            var html = '<li><a href="activity.html">'+activityJson[i].name+'('+activityJson[i].time+')</a></li>'
             acList.append(html);
         }
     }
