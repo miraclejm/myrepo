@@ -7,7 +7,7 @@
     while ($row = mysqli_fetch_assoc($result))
     {
     $select[] = array("name"=>$row['name'],"time"=>$row['time'],"title"=>$row['title'],
-        "msg"=>$row['msg'],"comment"=>$row['comment'],"cuser"=>$row['cuser']);
+        "msg"=>$row['msg'],"comment"=>$row['comment'],"cuser"=>$row['cuser'],"fireList"=>$row['fireList']);
     }
     echo json_encode($select);
     /*if($count){
