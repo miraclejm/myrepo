@@ -1,0 +1,52 @@
+{
+  "name": "gde",
+  "version": "1.0.0",
+  "description": "构建项目",
+  "main": "index.js",
+  "keywords": [
+    "gde"
+  ],
+  "bin": {
+    "gde": "bin/gde.js"
+  },
+  "devDependencies": {
+    "bluebird": "^3.1.1",
+    "child-process-promise": "~1.1.0",
+    "colors": "^1.1.2",
+    "escape-string-regexp": "^1.0.4",
+    "ftp-client": "^0.2.2",
+    "gitlab": "^1.5.0",
+    "gulp": "^3.9.0",
+    "gulp-cache": "^0.4.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-inline-source": "~2.1.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-minify-css": "^1.2.2",
+    "gulp-minify-html": "~1.0.4",
+    "gulp-rev": "^6.0.1",
+    "gulp-rev-collector": "^1.0.2",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-useref": "^3.0.4",
+    "http-server": "^0.8.5",
+    "imagemin-pngquant": "^4.2.0",
+    "map-stream": "0.0.6",
+    "mkdirp": "^0.5.1",
+    "shelljs": "^0.5.3",
+    "through2": "^2.0.0",
+    "underscore": "^1.8.3",
+    "yargs": "^3.31.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mojue",
+  "license": "ISC",
+  "dependencies": {
+    "ftp-client": "~0.2.2",
+    "gitlab": "~1.5.0"
+  }
+}

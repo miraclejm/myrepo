@@ -1,0 +1,14 @@
+{
+  "username": "Your alibaba account userame. For example, san.zhang",
+  "workid": "You alibaba work id. For example, 100000",
+  "gitlab": {
+    "url": "http://gitlab.alibaba-inc.com",
+    "token": "You gitlab token"
+  },
+  "ftp": {
+  	"host": "10.125.1.214",
+  	"port": "21",
+  	"user": "You ftp username",
+  	"password": "You ftp password"
+  }
+}

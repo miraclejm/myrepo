@@ -1,0 +1,296 @@
+/**
+ * Created by mojueww on 15/12/22.
+ */
+var gulp = require("gulp");
+var map = require('map-stream');
+var through = require("through2").obj;
+var argv = require('yargs').argv;
+var cwd = argv.path;
+var Promise = require("bluebird");
+var fs = require("fs");
+var useref = require('gulp-useref');
+var gulpif = require("gulp-if");
+var uglify = require('gulp-uglify');
+var minifyCss = require('gulp-minify-css');
+var stripDebug = require('gulp-strip-debug');
+var concat = require("gulp-concat");
+var rev = require("gulp-rev");
+var revC = require("gulp-rev-collector");
+var clean = require("gulp-clean");
+var escapeStringRegexp = require('escape-string-regexp');
+var _ =require("underscore");
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
+var cache = require('gulp-cache');
+// var jshint = require('gulp-jshint');
+var minifyHtml = require("gulp-minify-html");
+var inlinesource = require('gulp-inline-source');
+var gdeConfig = require("./lib/gde-config");
+
+var paths = {
+	js: [
+		'**/*.js'
+	],
+	css: [
+		'**/*.css'
+	],
+	img: [
+		'**/*.jpg',
+		'**/*.gif',
+		'**/*.png',
+		'**/*.JPG',
+		'**/*.GIF',
+		'**/*.PNG'
+	],
+	html: [
+		'*.html',
+		'*.htm'
+	],
+	other: [
+		'**/*.!(css|js|jpg|gif|png|html|htm)'
+	],
+	nooutput:["!node_modules/**/*","!gde-config.json","widgets.json","!**/demo/**/*"]
+};
+//TODO hack for h5maker
+if(argv.nojslist){
+	paths.js = ['**/*.js',
+		'!js/lib/**/*.js',
+		'!js/directives/**/*.js',
+		'!js/filters/**/*.js',
+		'!js/services/**/*.js',
+		'!js/states/**/*.js',
+		'!dist/**/*']
+}
+
+
+var origin = cwd;
+var linshi = cwd + gdeConfig.sep + gdeConfig.linshi;
+var output = cwd + gdeConfig.sep + gdeConfig.output;
+var buildFoler = cwd + gdeConfig.sep + gdeConfig.buildFolder;
+var htmlFolder = cwd + gdeConfig.sep + gdeConfig.htmlFolder;
+
+//版本 deploy命令自动添加
+var version = argv.version;
+//模式 deploy命令自动添加
+var model = argv.model;
+//cdn 地址
+var cdnpath = "";
+if(model == "daily"){
+	cdnpath = {
+		js_css:["http://g-assets.daily.taobao.net/amap-fe/" + version],
+		other:["http://g-assets.daily.taobao.net/amap-fe/" + version]
+	}
+}else if(model === "publish"){
+	cdnpath = {
+		js_css:["http://g.alicdn.com/amap-fe/" + version],
+		other:["http://g.alicdn.com/amap-fe/" + version]
+	}
+}else{
+	cdnpath = {
+		js_css:["https://g.alicdn.com/"],
+		other:["http://img.alicdn.com/"]
+	}
+}
+
+/* 主要操作start */
+var origincssjs;
+
+//将html文件合并引用 将html内容内联
+gulp.task("html",function(){
+	origincssjs = gulp.src(paths.js.concat(paths.css),{ cwd: linshi, dot: true });
+	return gulp.src(paths.html,{ cwd: linshi, dot: true })
+		.pipe(useref())
+		.pipe(inlinesource())
+		.pipe(gulp.dest(linshi));
+})
+
+
+//删除原文件 目前不删除
+gulp.task("deloriginjscss",['html'],function(){
+	//不删除源文件。
+	//return origincssjs && origincssjs.pipe(clean({ force: true }))
+})
+
+//处理图片
+gulp.task("img",['deloriginjscss'],function () {
+	return gulp.src([].concat(paths.img), { cwd: linshi,dot: true })
+		.pipe(imagemin({
+			progressive: true,
+			svgoPlugins: [{ removeViewBox: false }],
+			use: [pngquant()]
+		}))
+		.pipe(gulpif(argv.m||argv.md5,rev()))
+		.pipe(gulp.dest(output))
+		.pipe(rev.manifest('img.json'))
+		.pipe(cdnJob("other"))
+		.pipe(gulp.dest(output + '/map'));
+});
+
+//处理其他目录
+gulp.task("other",function () {
+	return gulp.src(paths.other, { cwd: linshi, dot: true })
+		.pipe(gulpif(argv.m||argv.md5,rev()))
+		.pipe(gulp.dest(output))
+		.pipe(rev.manifest('other.json'))
+		.pipe(cdnJob("other"))
+		.pipe(gulp.dest(output + '/map'));
+});
+
+/* css 目录中有../img/xxxx  需要替换为img/xxx  在map的时候才能正确替换 */
+gulp.task('cdncss',function () {
+	return gulp.src(paths.css, { cwd: linshi, dot: true })
+		.pipe(cssforcdn())
+		.pipe(gulp.dest(linshi));
+});
+
+//md5压缩css
+gulp.task('css', ['img','other',"cdncss"], function () {
+	return gulp.src([output + '/map/*.json'].concat(paths.css), { cwd: linshi, dot: true })
+		.pipe(revC({
+			//replaceReved: true
+		}))
+		.pipe(gulpif(argv.m||argv.md5,rev()))
+		.pipe(gulpif(argv.d||argv.deploy,minifyCss()))
+		.pipe(gulp.dest(output))
+		.pipe(rev.manifest('css.json'))
+		.pipe(cdnJob("css"))
+		.pipe(gulp.dest(output + '/map'));
+});
+
+//md5压缩js
+gulp.task('js', ['css'], function () {
+	return gulp.src([output + '/map/*.json'].concat(paths.js), { cwd: linshi, dot: true })
+		.pipe(revC({
+			//replaceReved: true
+		}))
+		//TODO hack h5maker 不去除console 和alert
+		.pipe(gulpif(!argv.nojslist,stripDebug()))
+		.pipe(gulpif(argv.d||argv.deploy,uglify()))
+		.pipe(gulpif(argv.m||argv.md5,rev()))
+		.pipe(gulp.dest(output))
+		.pipe(rev.manifest('js.json'))
+		.pipe(cdnJob("js"))
+		.pipe(gulp.dest(output + '/map'));
+});
+//处理html
+gulp.task('r_html', ['js'], function () {
+	return gulp.src([output + '/map/*.json'].concat(paths.html),{cwd:linshi,dot:true})
+		.pipe(revC({}))
+		.pipe(gulpif(argv.d || argv.deploy, minifyHtml()))
+		.pipe(gulp.dest(output)).on("finish",function(){
+			gulp.src([linshi]).pipe(clean({force: true}))
+			//拷贝一份代码到build
+			gulp.src([output + "/**"]).pipe(gulp.dest(buildFoler)).on('finish', function () {
+				gulp.src(paths.html,{cwd: buildFoler}).pipe(clean({ force: true }));
+			});
+			//拷贝一份代码到html
+			gulp.src(paths.html,{cwd: output}).pipe(gulp.dest(htmlFolder));
+		})
+});
+
+/* 主要操作end */
+
+var isJSHintFail = false;
+var myReporter = map(function (file, cb) {
+	if (!file.jshint.success) {
+		isJSHintFail = true;
+		console.log('JSHINT fail in '+file.path);
+		file.jshint.results.forEach(function (err) {
+			err = err.error;
+			if (err) {
+				console.log(' '+file.path + ': line ' + err.line + ', col ' + err.character + ', code ' + err.code + ', ' + err.reason);
+			}
+		});
+	}
+	cb(null, file);
+});
+
+gulp.task('jshint', function () {
+	return gulp.src(paths.js,{cwd: origin})
+		.pipe(jshint({
+			"globals": {
+				"AmapApp": true,
+				"require": true,
+				"define": true
+			},
+			"node": true,
+			"jquery": true,
+			"browser": true,
+
+			"asi": false,
+			"globalstrict": false,
+			"quotmark": true,
+			"smarttabs": true,
+			"trailing": true,
+			"undef": true,
+			"unused": true
+		}))
+		.pipe(myReporter);
+});
+
+
+gulp.task("release",function(){
+	if(argv.jshint || argv.jc){
+		gulp.start("jshint",function(){
+			if(isJSHintFail){
+				console.log("jsint Fail")
+			}else{
+				gulp.start("startcom");
+			}
+		})
+	}else{
+		gulp.start("startcom");
+	}
+})
+
+gulp.task("startcom",function(){
+	var arr = ['**'].concat(paths.nooutput);
+	//开始任务前先删除之前生成的文件夹
+	return gulp.src([output,linshi,buildFoler,htmlFolder]).pipe(clean({ force: true })).on('finish', function () {
+		//将文件copy一份到临时文件夹 之后操作零时文件夹不影响原来目录
+		gulp.src(arr, {cwd: origin}).pipe(gulp.dest(linshi)).on('finish', function () {
+			gulp.start('r_html', function () {
+			});
+		});
+	})
+
+})
+
+function cdnJob(type){
+	return gulpif(argv.cdn||argv.c, through(function (chunk, enc, callback)
+	{
+		var cont = chunk.contents.toString();
+		var json = JSON.parse(cont,null,4);
+		var jsCssLen = cdnpath.js_css.length;
+		var otherLen = cdnpath.other.length;
+		for (var p in json) {
+			if (type == 'js' || type == 'css') {
+				json[p] = cdnpath.js_css[randomRang(jsCssLen)] + json[p]
+			}
+			else {
+				json[p] = cdnpath.other[randomRang(otherLen)] + json[p]
+			}
+		}
+		chunk.contents = new Buffer(JSON.stringify(json,null,4));
+		this.push(chunk);
+		callback();
+	}));
+}
+
+function cssforcdn(){
+	return gulpif(argv.cdn||argv.c, through(function (chunk, enc, callback)
+	{
+		var cont = chunk.contents.toString();
+		cont = cont.replace(/\.\.\/img/g,"img");
+		//cont = cont.replace(/[^'|"|=]*\/img/g,"img");http
+		//TODO 路径问题
+		chunk.contents = new Buffer(cont);
+		this.push(chunk);
+		callback();
+	}));
+}
+
+function randomRang(max){
+	return Math.floor(max*Math.random(0,1));
+}
+
