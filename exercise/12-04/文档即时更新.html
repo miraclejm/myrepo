@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档</title>
+    <script src='../angular.min.js'></script>
+</head>
+<body ng-app="myapp">
+    <h1>笔记</h1>
+    <div ng-controller="myctrl">
+        <textarea name="article" cols="30" rows="10" ng-model="message"></textarea>
+        <button ng-click="save()">保存</button>
+        <button ng-click="clear()">清除</button>
+        <p>还可以输入<span ng-bind="left()"></span></p>
+    </div>
+    <script>
+        var app = angular.module('myapp',[]);
+        app.controller('myctrl',function($scope){
+            $scope.messgae="";
+            $scope.save = function(){
+                alert("保存你妹啊");
+            };
+            $scope.clear = function(){
+                alert("已清除");
+                $scope.message = "";
+            }
+            $scope.left = function(){
+                var flag = 100-$scope.message.length;
+                if(flag < 0 ){
+                    alert("不准写了");
+                    flag = 0;
+                }
+                return flag;
+            }
+        });
+    </script>
+</body>
+</html>

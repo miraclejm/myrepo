@@ -1,0 +1,28 @@
+body{background: #fff;}
+#nav-show{position:relative; z-index: 2; width: 6.4rem; height: 2.1rem; display: -webkit-box; display: -webkit-flex; display: flex; background: -webkit-gradient(linear,left top,left bottom, color-stop(70%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0.2))); background: gradient(linear,left top,left bottom, color-stop(70%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0.2)));}
+.nav-cell{ -webkit-box-flex: 1.0; -webkit-flex: 1; flex: 1; -webkit-box-pack: center; -webkit-justify-content:center; justify-content:center; text-align: center; margin-top:0.2rem;}
+.nav-icon{width: 0.7rem; height: 0.7rem; margin: 0.05rem auto 0 auto; background-size: 0.7rem 0.7rem !important;}
+.nav-msg{font-size: 0.26rem; margin-top: 0.1rem; color: #666;}
+#date{background: url(../img/date.png) no-repeat; }
+#weather{background: url(../img/weather.png) no-repeat; }
+#air{background: url(../img/air.png) no-repeat; }
+#limit{background: url(../img/limit.png) no-repeat;}
+#lineStatus{position:absolute; top:1.1rem; width: 6.4rem; height: 6.9rem; z-index: 1;}
+.btn{position:absolute; z-index: 4; width: 6.4rem; height: 0.88rem;background: #4d86ef; top:7.6rem;}
+.btn span{display: inline-block;}
+.btn-con{width: 4.5rem; margin: 0 auto; text-align: center;}
+.btn-icon{ vertical-align: middle; width:0.32rem; height:0.88rem; background: url(../img/addInfo.png) no-repeat; background-size: 0.3rem 0.4rem;line-height: 0.88rem; -webkit-transform: translateX(0.2rem); transform: translateX(0.2rem);}
+.btn-msg{ vertical-align: text-top; font-size: 0.28rem; color: #fff; margin: 0 auto; width: 3.9rem; height: 0.88rem; text-align: center; line-height: 0.88rem;}
+.logo{position: absolute; top: 8.68rem; margin-left:50%; -webkit-transform:translateX(-50%);transform:translateX(-50%); width: 1.92rem; height: 1rem; background: url(../img/logo.png) no-repeat; background-size: 1.92rem 1rem;}
+.lineCon{position: absolute; z-index: 3; width: 6.4rem; height: 1.3rem; background: rgba(68,76,87,0.85); top:6.32rem;}
+.showCon{width: 6.4rem; height: 0.65rem;}
+.showCon span{display: inline-block; vertical-align:text-top; margin-top: 0.2rem;}
+.show-icon{background: url(../img/flag.png) no-repeat; background-size: 0.66rem 0.36rem; width: 0.66rem; height: 0.36rem;}
+.show-msg{font-size: 0.28rem; color: #fff; height: 0.36rem; line-height: 0.36rem;}
+.bar{position:relative; width: 5rem; height: 0.08rem; background: #08cb73; margin: 0.05rem auto 0 auto; display: block;}
+.bar div{position: absolute; height: 0.08rem; z-index:9;}
+.blue{ background: #18aade; }
+.yellow{ background: #e7cb18; }
+.red{ background: #ce2821; }
+.timeMsg{width:5rem; height: 0.35rem; margin: 0.08rem auto 0 auto; font-size: 0.24rem; color: #d5d6d8;}
+.btn-tips{display: none; color: rgba(255,255,255,0.6); font-size: 0.28rem; text-align: center; height: 1.3rem; line-height: 1.3rem;}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实习笔记整理</title>
+</head>
+<body>
+    <div>
+        <h1>前端优化思想</h1>
+        <div>
+            前端优化<br/>
+            1.页面的重定向过多也会导致页面加载缓慢<br/>
+            2.雅虎目前的DOM元素也就在1400左右，使用document.getElementsByTagName("*").length来确定DOM的元素数量。<br/>
+            3.iframe用来加载速度较慢的内容，利用安全沙箱的原则，使得引入外部的内容无法获取文件的DOM。保证了安全性。但是iframe没有语义化，并且如果内容为空也依然加载<br/>
+            
+            4.在前端请求后台数据之后，先调用后台的response.flush()先返回给前端一部分数据，利用CSS,JS的地址。让网页去进行下载。在进行查询遍历返回后续资源。<br/>
+            5.空的SRC依然会被发送请求。浪费资源。<br/>
+            6.精简指令。
+                $('#id').data(key,value)糟糕的
+                $.data('#id',key,value)极好的<br/>
+        </div>
+    </div>
+     <div>
+        <h1>滚动条的一些东西</h1>
+        <div>
+            1.兼容问题<br/>
+            滚动条的事件监听是FF和其他派系。<br/>
+            FF：document.addEventListener('DOMMouseScroll')事件的监听。返回值是3和-3.并且。鼠标滚动向下为正值。滚动向上为负值。获取坐标通过e.detail<br/>
+            其余浏览器：事件为onmousewheel.<br/>返回值是-120和120，向下为负值，向上为正值。获取坐标通过event.wheelDelta<br/>
+            2.css方面<br/>
+            容器定位是relative.滚动条通过absolute相对右侧进行布局。内容为相对布局
+        </div>
+    </div>
+    <div>
+        <h1>jQuery review</h1>
+        <div>
+            1.$.browser判断浏览器的类型。<br/>
+            2.msie opera mozilla safari<br/>
+            3.JQ的两种开发插件的方式<br/>
+            4.$.extend<br/>
+            5.$.fn.fun<br/>
+            6.$.fn = $.prototype 是为jquery的对象添加方法。jquery对象可以直接调用<br/>
+            7.$.extend可以合并对象，添加bool值为true作为第一个参数会深度嵌套对象。也可以为jquery对象添加静态方法$.extend(fun).$.fun.
+        </div>
+    </div>
+    <div>
+        <h1>display:box || flex布局</h1>
+        <div>
+            父元素设置display:box 或者display:flex <br/>
+            父元素属性：<br/>
+            可以通过flex-direction设置排列方向<br/>
+            使用flex-wrap定义子元素换行的规则<br/>
+            flex-flow direction和wrap简写<br/>
+            justify-content:flex-start,flex-end,center,space-between,space-around(左对齐，右对齐，居中，两端，平分)<br/>
+            align-items(垂直方向上的):flex-start,flex-end,center,<br/>stretch(拉伸高德填充整个空间)<br/>
+            baseline基线对齐<br/>
+            子元素属性<br/>
+            order:数值越小，越靠前
+            flex:<br/>
+            flex-grow(默认放大空间)<br/>
+            flex-shrink(默认缩小空间)<br/>
+            flex-basis(固定大小)<br/>
+            align-self:垂直方向上的):flex-start,flex-end,center,<br/>stretch(拉伸高德填充整个空间)<br/>
+            需要对老版本进行兼容（微信内置浏览器）
+            使用display:-webkit-box
+        </div>
+    </div>
+    <div>
+        <h1>ES6</h1>
+        <div>
+            const:声明常亮，拥有自己的块级作用域<br/>
+            let拥有块级作用域<br/>
+            math新增静态方法<br/>
+            Math.trunc()返回一个数的整数部分<br/>
+            Math.sign()返回一个数的正负，返回值是 + - +0 -0<br/>
+            Math.cbrt()计算一个数的立方根<br/>
+            Math.fround()返回一个数的单精度浮点数<br/>
+            Math.hypot(a,b)返回a和b的平方和的平方根<br/>
+            Array.from()将拥有length属性的非数组元素转换为数组<br/>
+            Array.fill(val)以val填充，还接受两个参数分别是起始位置和结束位置<br/>
+            添加for of循环和for in循环一样。<br/>
+            .keys() .values() .entires()分别遍历对象的key value 键值对<br/>
+            for var  [index, elem] of ['a', 'b'].entries()) {<br/>
+            document.write('************');<br/>
+            document.write(index, elem);<br/>
+            
+        </div>
+    </div>
+    <div>
+        <h1>遇到的小问题</h1>
+        使用display:inline-block和text-align:justify底部最后一行内容不足以两端对齐的时候怎么办。<br/>.
+        插入一个元素设置为display:inline-block,width:100%;height:0;overflow:hidden;<br/>
+        div里面放个img图片下方距离div底部有个小白边。是因为在inline-block的元素中，它的基线就是最后一个行内元素的基线。除非有inline元素或者overflow:visable则基线就是margin底边缘
+    </div>
+    <div>
+        <h1>node</h1>
+        req.query  用来处理get请求，获取get请求的参数<br/>
+        req.params 处理url后面拼接的参数 /:xxx形式的get/post请求。获取请求参数<br/>
+        req.body 处理post请求，获取post请求体<br/>
+        req.param 处理get/post请求<br/>
+        使用顺序 params,body,query<br/>
+
+    </div>
+    <div> 
+        <h1>指令配置学习</h1>
+        <div>
+            process.cwd()进程当前的工作目录<br/>
+            process.execPath当前node进程的执行路径<br/>
+            Object.defineProperty(global, 'gde', {<br/>
+             enumerable : true,<br/>
+             writable : false,<br/>
+             Configurable:false,<br/>
+             value:gde<br/>
+            })<br/>
+        </div>
+    </div>
+    <div>
+        <h1>angular指令学习</h1>
+        <div>
+            ng-app:定义angular的作用范围<br/>
+            ng-controller:绑定对应的function,声明ng-controller的作用域就$scope的作用域<br/>
+            ng-model:声明的标签绑定对应的数据<br/>
+            ng-init:初始化变量值<br/>
+            ng-repeat:x in names 遍历数据，x为数据中的一条。$index为对应下标<br/>
+            $watch $apply $digest dirty-check<br/>
+            angular context循环机制。进入angular context后会进行$digest循环。dirty-check,查询是否有值发生改变。<br/>
+            页面初始化加载时会进入一次。之后通过$apply进入。<br/>
+            $watch的第三个参数是bool值。默认为false，代表nv和ov比较的是引用。true代表nv和ov比较的是值<br/>
+            触发apply。赋值+scope.$apply.或者scope.$apply("赋值")
+        </div>
+    </div>
+    <h2>json字符串在PHP中通过json_decode(true)转换成数组或者obj,true是数组，false转为对象。</h2>
+    <script type="text/javascript" src='test.js'></script>
+  <!--   <script type="text/javascript">
+      setTimeout(function(){
+          var el=document.createElement('script');
+          el.type='text/javascript';
+          el.src='http://g.tbcdn.cn/alimf/mf-perfreport/0.0.2/perfreport.min.js';
+          el.onerror=function(){
+              alert("啊哦！！！遇到问题了！你可以尝试将js文件复制到你项目中。");
+          };document.getElementsByTagName('body')[0].appendChild(el);
+      },5000);
+  </script> -->
+</body>
+</html>

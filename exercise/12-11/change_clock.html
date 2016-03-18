@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>change_clock</title>
+    <script type="text/javascript" src="../angular.min.js"></script>
+    <script type="text/javascript" src="./change_clock.js"></script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="myctrl">
+        <p>Date-fomat:<input ng-model="format" type="text"></input></p>
+        <p>currentTimeis:<span clock="format"></span></p>
+    </div>
+</body>
+</html>

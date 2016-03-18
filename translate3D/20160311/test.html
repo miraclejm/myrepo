@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .stage{
+        width: 600px;
+        height: 400px;
+        margin: 0 auto;
+        margin-top:150px;
+        position: relative;
+        -webkit-perspective: 800px;
+        -moz-perspective: 800px;
+            perspective: 800px;
+    
+    }
+    .con{
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        -webkit-transition: -webkit-transform 1s;
+        -moz-transition: -moz-transform 1s;
+            transition: transform 1s;
+    
+        -webkit-transform-style: preserve-3d;
+          -moz-transform-style: preserve-3d;
+               transform-style: preserve-3d;    
+        left: 50%;
+        margin-left: -40px;
+    }
+    .con img{
+        position: absolute;
+        width: 80px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.5);
+        
+        -webkit-transition: opacity 1s, -webkit-transform 1s;
+           -moz-transition: opacity 1s, -moz-transform 1s;
+                transition: opacity 1s, transform 1s;
+        bottom: 0;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="test.css">
+<body>
+    <div class='stage'>
+        <div class='con'>
+            <img src="1.jpg" alt="" id='pic1' class='pic'>
+            <img src="2.jpg" alt="" id='pic2' class='pic'>
+            <img src="3.jpg" alt="" id='pic3' class='pic'>
+            <img src="4.jpg" alt="" id='pic4' class='pic'>
+            <img src="5.jpg" alt="" id='pic5' class='pic'>
+            <img src="6.jpg" alt="" id='pic6' class='pic'>
+            <img src="7.jpg" alt="" id='pic7' class='pic'>
+            <img src="8.jpg" alt="" id='pic8' class='pic'>
+        </div>
+    </div>
+    <div class='btn'>抖动</div>
+    <script type="text/javascript">
+        function $(ele){
+            return document.querySelector(ele);
+        }
+        function $$(ele){
+            return document.querySelectorAll(ele);
+        }
+        var con = $(".con");
+        var list= $$('.pic');
+        var rotate = 360/list.length;
+        var transZ = 64 / Math.tan((rotate / 2 / 180) * Math.PI);
+        con.addEventListener('click',function(){
+
+        });
+        for(var i = 0; i < list.length; i++){
+           $("#pic"+(i+1)).style.transform = "rotateY(" + rotate*i + "deg) translateZ(" + (transZ+20)+ "px)";
+        }
+        $('.btn').addEventListener('click',function(){
+            document.getElementsByTagName( "body")[0].className="shake";
+        });
+    </script>
+    <!-- <script type="text/javascript" src='test.js'></script> -->
+</body>
+</html>

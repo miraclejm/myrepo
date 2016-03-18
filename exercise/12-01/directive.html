@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>指令</title>
+	<script src='../angular.min.js'></script>
+	<script src='./main.js'></script>
+</head>
+<body ng-app='myapp'>
+	<input type="text" ng-model="name">
+	<h1>Hello{{name}}</h1>
+	<h2 ng-bind="name"></h2>
+	<h3 ng-controller='myCtrl'>{{name}}</h3>
+	<div ng-init="names=['a','b','c','d']">
+		<li ng-repeat='x in names'>
+			{{x}}
+		</li>
+	</div>
+	<div>
+		<p>ng-bind与{{}}都可以作为数据绑定的指令</p>
+		<p>ng-app用来声明angular的作用范围，ng-controller声明angular对象，通过angular.module声明模块，通过.controller来控制作用域并且声明$scope。</p>
+		<p>通过ng-init初始化变量，通过ng-repeat="x in value"和{{x}}来遍历。</p>
+		<p>配置虚拟机作为测试服务器需要virtualbox 和vagrant还有git,运行插件指令最好在git bash上。否则ssh无法解析</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+!function(o){function e(){var o=document.querySelector("#slideCon"),e=(new PicSlide(o,{isLoop:!1}),document.querySelector(".bottom_btn")),n="androidamap://rootmap?sourceApplication=revokeUser";AmapApp.log.initLog("revokeUser"),AmapApp.log.log("pv_professional"),e.addEventListener("click",function(){AmapApp.log.log("btn_click"),AmapApp.napi.loadSchema(n)},!1)}e()}(window);

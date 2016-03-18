@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScrollBar</title>
+    <script type="text/javascript" src="./jquery.min.js"></script>
+    <style>
+    *{padding:0;margin: 0;}
+    .wrap{
+        position: relative;height: 400px;overflow: hidden;background: #f00;width: 400px;
+    }
+    .cont{position: relative;top:0px;z-index: 999;}
+    .bar{position: absolute;top:0px;right: 0px;width: 15px;height: 100%;z-index:9999;background: #78ade3;}
+    .mid{position: absolute;top:12px;width: 15px;height: 60px;background: #333;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="cont">
+            lar context循环机制。进入angular context后会进行$digest循环。dirty-check,查询是否有值发生改变。
+            页面初始化加载时会进入一次。之后通过$apply进入。
+            $watch的第三个参数是bool值。默认为false，代表nv和ov比较的是引用。true代表nv和ov比较的是值
+            触发apply。赋值+scope.$apply.或者scope.$apply("赋值")
+            --------------------------------------------------------------------------
+            module.directive()指令的参数中的
+            restrict的参数
+                                E代表创建的指令是元素
+                                A代表创建的指令是属性
+                                C代表的是class
+                                M代表的是注释
+            transclude
+                                创建的directive可能接受页面上的其他HTML内容才会用到。一般不用。
+            scope：如果写上了，创建的指令不会继承创建此指令的controller的scope.会创建新的scope.
+            link
+                                当directive被angular编译后执行的方法
+            --------------------------------------------------------------------------
+            module.injector()和module.invoke()
+        </div>
+    </div>
+    <script type="text/javascript" src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css完全自适应布局demo</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<style>
+/* by wfz */
+html,body{margin: 0;padding: 0;height: 100%;overflow: hidden;}
+body{font:normal 14px/1.5 Helvetica; text-align: center; color: #34495e;}
+
+.layout_mod{height: 100%;display:-webkit-box; -webkit-box-orient: vertical;}
+.layout_hd, .layout_ft{min-height: 21px;line-height: 21px;}
+.layout_bd{-webkit-box-flex:1;display: -webkit-box; width: 100%;}
+.layout_bd_l{width: 120px;}
+.layout_bd_m{-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient: vertical;}
+.layout_bd_m_t{-webkit-box-flex:1;}
+.layout_bd_m_b{height: 100px;}
+.layout_bd_r{width: 100px;}
+
+.layout_mod,
+.layout_hd,
+.layout_bd,
+.layout_bd_l,
+.layout_bd_m,
+.layout_bd_m_t,
+.layout_bd_m_b,
+.layout_bd_r,
+.layout_ft{
+    overflow: hidden;
+}
+
+/* 以下是美化部分 可以删掉 */
+.layout_mod{
+    background-image: linear-gradient(90deg, #F5F5F5 4.16666667%, #fdfdfd 4.16666667%, #fdfdfd 8.33333333%, #F5F5F5 8.33333333%, #F5F5F5 12.5%, #fdfdfd 12.5%, #fdfdfd 16.66666667%, #F5F5F5 16.66666667%, #F5F5F5 20.83333333%, #fdfdfd 20.83333333%, #fdfdfd 25%, #F5F5F5 25%, #F5F5F5 29.16666667%, #fdfdfd 29.16666667%, #fdfdfd 33.33333333%, #F5F5F5 33.33333333%, #F5F5F5 37.5%, #fdfdfd 37.5%, #fdfdfd 41.66666667%, #F5F5F5 41.66666667%, #F5F5F5 45.83333333%, #fdfdfd 45.83333333%, #fdfdfd 50%, #F5F5F5 50%, #F5F5F5 54.16666667%, #fdfdfd 54.16666667%, #fdfdfd 58.33333333%, #F5F5F5 58.33333333%, #F5F5F5 62.5%, #fdfdfd 62.5%, #fdfdfd 66.66666667%, #F5F5F5 66.66666667%, #F5F5F5 70.83333333%, #fdfdfd 70.83333333%, #fdfdfd 75%, #F5F5F5 75%, #F5F5F5 79.16666667%, #fdfdfd 79.16666667%, #fdfdfd 83.33333333%, #F5F5F5 83.33333333%, #F5F5F5 87.5%, #fdfdfd 87.5%, #fdfdfd 91.66666667%, #F5F5F5 91.66666667%, #F5F5F5 95.83333333%, #fdfdfd 95.83333333%);
+}
+.layout_hd, 
+.layout_ft{
+    background-color: rgba(72, 174, 255, 0.27);
+    box-shadow: inset 1px 1px rgba(78, 78, 78, 0.1), inset -1px -1px rgba(78, 78, 78, 0.1);
+}
+.layout_bd > div{
+    box-shadow: inset 1px 1px rgba(78, 78, 78, 0.1), inset -1px -1px rgba(78, 78, 78, 0.1);
+}
+
+.layout_bd_l{background-color: rgba(255, 0, 0, 0.27);}
+.layout_bd_m{background-color: rgba(0, 0, 255, 0.27);}
+.layout_bd_m_b{background-color: rgba(0, 0, 255, 0.27);}
+.layout_bd_r{background-color: rgba(0, 255, 0, 0.27);}
+</style>
+</head>
+<body>
+
+<div class="layout_mod">
+    <div class="layout_hd">1区：(固定高度，宽度自适应)</div>
+    <div class="layout_bd">
+        <div class="layout_bd_l">
+            <div> 2区：(固定宽度，高度自适应) </div>
+        </div>
+        <div class="layout_bd_m">
+            <div class="layout_bd_m_t">
+                3区：(宽高完全自适应)
+            </div>
+            <div class="layout_bd_m_b">
+                3-2区：(始终在3区底部)
+            </div>
+        </div>
+        <div class="layout_bd_r">
+            <div style="min-height:100px;"> 4区：(固定宽度，高度自适应) </div>
+        </div>
+    </div>
+    <div class="layout_ft">5区：(固定高度，宽度自适应)</div>
+</div>
+
+</body>
+</html>

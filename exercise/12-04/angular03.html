@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令</title>
+    <script src='../angular.min.js'></script>
+    <script src='./main.js'></script>
+</head>
+<body ng-app="myapp">
+  <div ng-controller="myCtrl">
+    <input type="text" ng-model="user.head">
+    <input type="text" ng-model="user.ass">
+    <button ng-click="reset()">重置</button>
+    <p>{{head}}</p>
+    <p>{{ass}}</p>
+    {{5+5}}
+    <form name="myform" novalidate>
+    <input type="text" name="ac" ng-model="name" required>
+    {{5+5}}
+    <span ng-show="myform.ac.$dirty && myform.ac.$invalid">名字非法</span>
+    <span ng-show="myform.ac.$error.required">名字</span>
+    <input type="email" name="pa" ng-model="email" required>
+    <span ng-show="myform.pa.$error.email">非法email</span>
+    <span ng-show="myform.pa.$error.required">邮箱是必须的</span>
+    <input type="submit" ng-disabled="myform.ac.$dirty&&myform.ac.$invalid || myform.pa.$dirty&&myform.pa.$invalid">
+    </form>
+    $dirty $pristine $invalid $valid
+  </div>
+</body>
+</html>

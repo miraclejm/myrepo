@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+    <script type="text/javascript" src="../angular.min.js"></script>
+    <!-- <script type="text/javascript" src="./filter.js"></script> -->
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="ctrl">
+        outside:{{value}}
+        <div ng-init="value=12" my-directive>
+            Inside:{{value}}
+        </div>
+    </div>
+    <script type="text/javascript">
+        angular.module('myapp',[])
+        .controller('ctrl',function($scope){})
+        .directive('my-directive',function(){
+            return{
+                restrict:'A',
+                scope:{},
+                priority:100,
+                template:'<div >Inside:{{priority}}</div>'
+            };
+        });
+    </script>
+</body>
+</html>

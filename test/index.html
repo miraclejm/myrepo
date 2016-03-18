@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Document</title>
+<!--     <link rel="stylesheet" type="text/css" href="index2.css">
+<link rel="stylesheet" type="text/css" href="index.css"> -->
+</head>
+<body>
+     <ul class="slider">
+        <li class='slide1' id="professional"></li>
+        <li class='slide2' id="accurate"></li>
+        <li class='slide3' id="bus"></li>
+        <li class='slide4' id="electric"></li>
+    </ul>
+    <div class='a'>
+        <div class='b'>Help</div>
+    </div>
+    <script type="text/javascript">
+        var rate = (document.documentElement.clientWidth*100)/640;
+        document.querySelector('html').style.fontSize = rate + 'px';
+        function fun(n,o){
+            console.log(n);
+            console.log(o);
+            return {
+                fun:function(m){
+                    console.log("我是"+m);
+                    return fun(m,n);
+                }
+            }
+        }
+        var a = fun(0);//n=0 o=undefined
+        a.fun(1);//1 0 
+        a.fun(2);//2 0 
+        a.fun(3);// 3 0
+        console.log("-----------------------");
+        var b = fun(0).fun(1).fun(2).fun(3);
+         console.log("-----------------------");
+        var c = fun(0).fun(1);//n=0 o=un;n=1 o = 0;
+          c.fun(2);//2,1 
+          c.fun(3);//3,1
+    </script>
+</body>
+</html>

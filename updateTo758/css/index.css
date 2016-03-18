@@ -1,0 +1,16 @@
+@charset "utf-8";
+* {padding:0; margin:0;}
+html,body{background: #f8243e;}
+body {
+    -webkit-user-select:none;
+    -webkit-touch-callout:none;
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:inherit; color:#333;
+    background-color:#f0f0f0;
+    word-wrap:break-word;
+}
+#bg {margin-top:-1rem;height:10.7rem; background: url(../img/update_bg.jpg) no-repeat 0 0; background-size:6.4rem 10.7rem;}
+#btn {position:absolute; top:4.8rem; left:50%; margin-left:-2.23rem; width: 4.45rem; height:0.7rem; background: url(../img/update_btn.png) no-repeat 0 0; background-size: 4.45rem 0.7rem;}

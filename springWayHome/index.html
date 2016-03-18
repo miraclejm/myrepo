@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>春节回家专属攻略</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+<link type="text/css" rel="stylesheet" href="css/common.css" />
+<link type="text/css" rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+<div class="main" id="main">
+	<div class="city-input half-border city-from" id="cityFrom">输入我的出发城市</div>
+	<div class="city-input half-border city-to" id="cityTo">输入我将到达城市</div>
+	<div class="viewMyRoute" id="viewMyRoute"></div>
+
+	<div id="citySelect" class="city-select hidden">
+		<div class="button clearfix line-half">
+			<span class="cancel">取消</span>
+			<span class="ok">确定</span>
+		</div>
+		<div class="list" id="provinceList">
+			<ul class="clearfix"></ul>
+			<div class="cover line-half top"></div>
+			<div class="cover line-half bottom"></div>
+		</div>
+		<div class="list" id="cityList">
+			<ul class="clearfix"></ul>
+			<div class="cover line-half top"></div>
+			<div class="cover line-half bottom"></div>
+		</div>
+	</div>
+
+	<div id="toast" class="toast none"></div>
+</div>
+
+<script src="js/amap_util.js"></script>
+<script src="js/amap_log.js"></script>
+<script src="js/amap_browser.js"></script>
+<script src="js/easyScroll.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

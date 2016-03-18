@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+html {font-size: 50px;}
+body {background-color: #f9f9f9;}
+
+.main {
+	height: 11.36rem;
+	background: url(http://cache.amap.com/h5/activity/springWayHome/index_bg3.jpg) no-repeat 0 0;
+	background-size: 100% 11.36rem;
+}
+
+.city-input {
+	position: absolute; left: 50%;
+	margin-left: -2rem;
+	border-radius: 1px;
+	width: 4rem; height: 0.9rem;
+	font-size: 0.3rem; color: #bfbdc1; line-height: 0.9rem; text-align: center;
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 0.08rem #f0f0f3 inset;
+	box-shadow: 0 0 0.08rem #f0f0f3 inset;
+}
+.city-input.half-border:before {
+	border-color: #d9d9d9; border-radius: 1px;
+}
+.city-input.selected {color: #000;}
+.city-from {top: 5.65rem;}
+.city-to {top: 6.98rem;}
+
+.viewMyRoute {
+	position: absolute; top: 8.32rem; left: 50%;
+	margin-left: -1.79rem;
+	width: 3.58rem; height: 0.87rem;
+	background: url(../img/view_my_route.png) no-repeat 0 0;
+	background-size: 3.58rem 0.87rem;
+}
+
+.city-select {
+	position: fixed; bottom: 0; background-color: #fff;
+	z-index: 9;
+	height: 3rem; width: 100%; padding: 0.64rem 0 0.34rem;
+	display: -webkit-box;
+}
+.city-select.none {display: none;}
+.city-select .button {
+	position: absolute; top: 0; z-index: 10;
+	width: 100%;
+}
+.city-select .button .cancel, .city-select .button .ok {
+	float: left; display: block;
+	font-size: 0.24rem; color: #333; line-height: 0.24rem;
+	padding: 0.2rem;
+}
+.city-select .button .ok {float: right;}
+.city-select .cover {
+	position: absolute; left: 0;
+	width: 100%; height: 1.2rem;
+	z-index: 15;
+	background: -webkit-linear-gradient(top, rgba(255,255,255, 1), rgba(255,255,255,0));
+}
+.city-select .cover.line-half:before {background-color: #d7d7d7;}
+.city-select .cover.top {
+	top: 0;
+}
+.city-select .cover.bottom {
+	bottom: 0;
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255, 1));
+}
+.city-select .cover.bottom:before {
+	top: 0;
+}
+.city-select .list {
+	-webkit-box-flex: 1;
+	height: 3rem;
+	width: 1px;
+	position: relative;
+	overflow: hidden;
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d;
+}
+.city-select .list ul {
+	padding: 1.2rem 0;
+}
+.city-select .list li {
+	float: left;
+	font-size: 0.36rem; color: #9e9e9e; text-align: center;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	width: 100%;
+	-webkit-transform-origin: center center;
+	-webkit-transition-duration: 150ms;
+	-webkit-transform-style: preserve-3d;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.city-select .list li.selected {
+	font-size: 0.44rem; color: #393939;
+}
+
+.toast {
+	position: fixed; top: 50%; left: 1rem; right: 1rem;
+	margin-top: -0.3rem; padding: 0.1rem;
+	background-color: rgba(0,0,0,0.6);
+	text-align: center; color: #fff; font-size: 0.3rem; line-height: 0.4rem;
+}

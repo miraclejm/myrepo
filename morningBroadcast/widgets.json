@@ -1,0 +1,26 @@
+{
+    "zepto": {
+        "folder": "js/lib",
+        "url": "git@gitlab.alibaba-inc.com:amap-lab/zepto.git"
+    },
+    "amap_util": {
+        "folder": "js/lib",
+        "url": "git@gitlab.alibaba-inc.com:amap-lab/util.git"
+    },
+    "amap_bridge": {
+        "folder": "js/lib",
+        "url": "git@gitlab.alibaba-inc.com:amap-lab/native.git"
+    },
+    "amap_browser": {
+        "folder": "js/lib",
+        "url": "git@gitlab.alibaba-inc.com:amap-lab/browser.git"
+    },
+    "amap_log": {
+        "folder": "js/lib",
+        "url": "git@gitlab.alibaba-inc.com:amap-lab/log.git"
+    },
+    "reset": {
+        "folder": "css",
+        "url": "git@gitlab.alibaba-inc.com:amap-lab/reset.git"
+    }
+}

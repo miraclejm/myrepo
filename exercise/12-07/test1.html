@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='../angular.min.js'></script>
+    <script src='./main.js'></script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl" ng-init="sb={name:'jm',age:21,gender:'man'}">
+   <!--  <div>
+    {{5+5}}
+        Search:
+        <input type="text" ng-model="query">    
+    </div>
+    <div>
+        <ul>
+            <li ng-repeat = "x in names | filter:query">{{x.name}}{{"+"+x.eat}}</li>
+        </ul>
+    </div> -->
+    <!-- <div newclock></div>A -->
+    <!-- <newclock data="sb"></newclock> -->
+    <!-- <div class="newclock"></div> -->
+    <newclock data="sb"></newclock>
+    <div logger data="sb"></div>
+    <input type="text" ng-model="name">
+    <p>更新了{{update}}次</p>
+</body>
+</html>
