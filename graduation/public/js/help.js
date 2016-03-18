@@ -45,7 +45,7 @@
                                 "<div class='c_info'><h4 ><span class='c_name'>"+data[i].name+"</span>发布于(<span class='c_time'>"+data[i].time+"</span>)"+"</h4></div>" +
                                 "<div class='showMsg'>查看详细内容<i>&#xe902</i></div>" +
                                 "<div class='c_msg none'>"+data[i].msg+"</div>" +
-                                "<div>"+
+                                "<div class='showCuser'>"+
                                 "<div class='action'>";
                         if(data[i].fireList.indexOf(current_user) >0 ){
                             html += "<span class='fire off'>&#xe901<i class='fire_num'>"+(cl.length-1)+"</i></span>";
@@ -58,7 +58,7 @@
                                 "<div class='comment'>";
                                 for(var j=0;j<c.length;j++){
                                     if(c[j] != "" && cu[j] != ""){
-                                        html += "<div>"+c[j]+"<span>__by_"+cu[j]+"</span></div>";
+                                        html += "<div class='eachComment'><div class='eachContent'>"+c[j]+"</div><div class='eachCuser'>__By"+cu[j]+"</div><div class='clearfix'></div></div>";
                                     }
                                 }
                                 html +=  "<div class='publish'>"+
@@ -127,9 +127,12 @@
                             method:'POST',
                             data:'username='+c_user+'&comment='+c_in+'&time='+c_time+'&title='+c_title+'&msg='+c_msg+'&name='+c_name,
                             success:function(data){
-                                $("<div>"+c_in+"<span>__by_"+c_user+"</span>"+"</div>").insertBefore(_this.parent());
+                                var comment_num = _this.parent().parent().parent().find('.action').find('.showComment').find('.comment_num').text();
+                                comment_num = parseInt(comment_num) + 1;
+                                _this.parent().parent().parent().find('.action').find('.showComment').find('.comment_num').text(comment_num);
+                                $("<div class='eachComment'><div class='eachContent'>"+c_in+"</div><div class='eachCuser'>__By"+c_user+"</div>"+"<div class='clearfix'></div></div>").insertBefore(_this.parent());
                                 if(data){
-                                    _this.parent().slideToggle();
+                                    _this.parent().hide();
                                 }else{
                                     alert("评论失败，请重新");
                                 }
@@ -137,7 +140,9 @@
                         })
                     });
                     $('.showMsg').on('click',function(){
+                        // alert("b");
                         var _this = $(this);
+                         _this.parent().find('.showCuser').find('.comment').slideToggle();
                         _this.parent().find('.c_msg').slideToggle(function(){
                             if(_this.parent().find('.c_msg').attr('class').indexOf("none") >= 0){
                                 _this.parent().find('.c_msg').removeClass('none');
@@ -147,12 +152,20 @@
                             else{
                                 _this.parent().find('.c_msg').addClass('none');
                                 _this.html("查看详细内容<i>&#xe902</i>");
+                                // _this.parent().find('.showCuser').find('.comment').hide();
                                 // _this.find('i').html('&#xe902');
                             }
                         });
                     });
                     $('.showComment').on('click',function(e){
                         var show = $(this).parent().parent().find('.comment');
+                        var publish = show.find('.publish');
+                        if(publish.css('display') === "none"){
+                            publish.css('display','block');
+                        }
+                        else{
+                            publish.css('display','none');
+                        }
                         $('.comment').not(show).css('display','none');
                         var comment_list = $('.comment');
                         if(!getCookie("name")){
@@ -160,7 +173,7 @@
                             location.replace("index.html");
                         }
                         // var numC = $('.showComment i').text();
-                        show.slideToggle();
+                        // show.slideToggle();
                     });
                 }
         })
@@ -172,6 +185,10 @@
             }
             $('.mask').show();
             $('.publishHelp').show();
+        });
+        $('.closeHelp').on('click',function(){
+            $('.mask').hide();
+            $('.publishHelp').hide();
         });
         $('.helpSure').on('click',function(){
             var helpTitle = $('.helpTitle').val();
@@ -200,7 +217,7 @@
                                     "<div class='c_info'><h4 class='c_name'>"+name+"发布于(<span class='c_time'>"+timeStr+"</span>)"+"</h4></div>" +
                                     "<div class='showMsg'>查看详细内容<i>&#xe902</i></div>" +
                                     "<div class='c_msg none'>"+helpMsg+"</div>" +
-                                    "<div>"+
+                                    "<div class='showCuser'>"+
                                     "<div class='action'>"+
                                     "<span class='fire on'>&#xe901<i class='fire_num'>0</i></span>"+
                                     "<span class='showComment'>&#xe900<i class='comment_num'>0</i></span>"+
@@ -273,7 +290,7 @@
                             success:function(data){
                                 $("<div>"+c_in+"<span>__by_"+c_user+"</span>"+"</div>").insertBefore(_this.parent());
                                 if(data){
-                                    _this.parent().slideToggle();
+                                    _this.parent().hide();
                                 }else{
                                     alert("评论失败，请重新");
                                 }
@@ -281,16 +298,19 @@
                         })
                     });
                     $('.showMsg').on('click',function(){
+                        alert("a");
                         var _this = $(this);
                         _this.parent().find('.c_msg').slideToggle(function(){
                             if(_this.parent().find('.c_msg').attr('class').indexOf("none") >= 0){
                                 _this.parent().find('.c_msg').removeClass('none');
                                 _this.html("收起详细内容<i>&#xe903</i>");
+                                _this.parent().find('.showCuser').find('comment').slideToggle();
                                 // _this.find('i').html('');
                             }
                             else{
                                 _this.parent().find('.c_msg').addClass('none');
                                 _this.html("查看详细内容<i>&#xe902</i>");
+                                _this.parent().find('.showCuser').find('comment').slideToggle();
                                 // _this.find('i').html('&#xe902');
                             }
                         });
@@ -304,7 +324,7 @@
                             location.replace("index.html");
                         }
                         // var numC = $('.showComment i').text();
-                        show.slideToggle();
+                        // show.slideToggle();
                     });
                     }
                 }
